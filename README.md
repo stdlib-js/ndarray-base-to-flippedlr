@@ -45,32 +45,14 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/ndarray-base-to-flippedlr
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-var toFlippedlr = require( '@stdlib/ndarray-base-to-flippedlr' );
+import toFlippedlr from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-flippedlr@esm/index.mjs';
 ```
 
 #### toFlippedlr( x )
@@ -78,8 +60,8 @@ var toFlippedlr = require( '@stdlib/ndarray-base-to-flippedlr' );
 Returns a new ndarray where the order of elements along the last dimension of an input ndarray is reversed.
 
 ```javascript
-var ndarray = require( '@stdlib/ndarray-ctor' );
-var ndarray2array = require( '@stdlib/ndarray-to-array' );
+import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@esm/index.mjs';
+import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
 
 var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
 var shape = [ 3, 2 ];
@@ -133,11 +115,16 @@ The function accepts the following arguments:
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var array = require( '@stdlib/ndarray-array' );
-var ndarray2array = require( '@stdlib/ndarray-to-array' );
-var zeroTo = require( '@stdlib/array-base-zero-to' );
-var toFlippedlr = require( '@stdlib/ndarray-base-to-flippedlr' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+
+import array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-array@esm/index.mjs';
+import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
+import zeroTo from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-base-zero-to@esm/index.mjs';
+import toFlippedlr from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-flippedlr@esm/index.mjs';
 
 // Create a linear ndarray buffer:
 var buf = zeroTo( 16 );
@@ -154,6 +141,10 @@ var y = toFlippedlr( x );
 var a = ndarray2array( y );
 console.log( a );
 // => [ [ [ 1, 0 ], [ 3, 2 ], [ 5, 4 ], [ 7, 6 ] ], [ [ 9, 8 ], [ 11, 10 ], [ 13, 12 ], [ 15, 14 ] ] ]
+
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -185,7 +176,7 @@ console.log( a );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
