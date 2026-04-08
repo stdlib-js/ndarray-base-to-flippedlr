@@ -45,43 +45,32 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/ndarray-base-to-flippedlr
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-toFlippedlr = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-flippedlr@umd/browser.js' )
-```
-The previous example will load the latest bundled code from the umd branch. Alternatively, you may load a specific version by loading the file from one of the [tagged bundles](https://github.com/stdlib-js/ndarray-base-to-flippedlr/tags). For example,
-
-```javascript
-toFlippedlr = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-flippedlr@v0.1.1-umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var toFlippedlr = require( 'path/to/vendor/umd/ndarray-base-to-flippedlr/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-flippedlr@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.toFlippedlr;
-})();
-</script>
+var toFlippedlr = require( '@stdlib/ndarray-base-to-flippedlr' );
 ```
 
 #### toFlippedlr( x )
@@ -90,7 +79,7 @@ Returns a new ndarray where the order of elements along the last dimension of an
 
 ```javascript
 var ndarray = require( '@stdlib/ndarray-ctor' );
-var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var getShape = require( '@stdlib/ndarray-shape' );
 
 var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
 var shape = [ 3, 2 ];
@@ -98,22 +87,16 @@ var strides = [ 2, 1 ];
 var offset = 0;
 
 var x = ndarray( 'generic', buffer, shape, strides, offset, 'row-major' );
-// returns <ndarray>
+// returns <ndarray>[ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
-var sh = x.shape;
+var sh = getShape( x );
 // returns [ 3, 2 ]
-
-var arr = ndarray2array( x );
-// returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 var y = toFlippedlr( x );
-// returns <ndarray>
+// returns <ndarray>[ [ 2.0, 1.0 ], [ 4.0, 3.0 ], [ 6.0, 5.0 ] ]
 
-sh = y.shape;
+sh = getShape( y );
 // returns [ 3, 2 ]
-
-arr = ndarray2array( y );
-// returns [ [ 2.0, 1.0 ], [ 4.0, 3.0 ], [ 6.0, 5.0 ] ]
 ```
 
 The function accepts the following arguments:
@@ -144,16 +127,11 @@ The function accepts the following arguments:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-array@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-base-zero-to@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-to-flippedlr@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var array = require( '@stdlib/ndarray-array' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var zeroTo = require( '@stdlib/array-base-zero-to' );
+var toFlippedlr = require( '@stdlib/ndarray-base-to-flippedlr' );
 
 // Create a linear ndarray buffer:
 var buf = zeroTo( 16 );
@@ -170,11 +148,6 @@ var y = toFlippedlr( x );
 var a = ndarray2array( y );
 console.log( a );
 // => [ [ [ 1, 0 ], [ 3, 2 ], [ 5, 4 ], [ 7, 6 ] ], [ [ 9, 8 ], [ 11, 10 ], [ 13, 12 ], [ 15, 14 ] ] ]
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -236,8 +209,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [npm-image]: http://img.shields.io/npm/v/@stdlib/ndarray-base-to-flippedlr.svg
 [npm-url]: https://npmjs.org/package/@stdlib/ndarray-base-to-flippedlr
 
-[test-image]: https://github.com/stdlib-js/ndarray-base-to-flippedlr/actions/workflows/test.yml/badge.svg?branch=v0.1.1
-[test-url]: https://github.com/stdlib-js/ndarray-base-to-flippedlr/actions/workflows/test.yml?query=branch:v0.1.1
+[test-image]: https://github.com/stdlib-js/ndarray-base-to-flippedlr/actions/workflows/test.yml/badge.svg?branch=main
+[test-url]: https://github.com/stdlib-js/ndarray-base-to-flippedlr/actions/workflows/test.yml?query=branch:main
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/ndarray-base-to-flippedlr/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/ndarray-base-to-flippedlr?branch=main
