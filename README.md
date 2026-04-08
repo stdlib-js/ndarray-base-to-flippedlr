@@ -79,7 +79,7 @@ Returns a new ndarray where the order of elements along the last dimension of an
 
 ```javascript
 var ndarray = require( '@stdlib/ndarray-ctor' );
-var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var getShape = require( '@stdlib/ndarray-shape' );
 
 var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
 var shape = [ 3, 2 ];
@@ -87,22 +87,16 @@ var strides = [ 2, 1 ];
 var offset = 0;
 
 var x = ndarray( 'generic', buffer, shape, strides, offset, 'row-major' );
-// returns <ndarray>
+// returns <ndarray>[ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
-var sh = x.shape;
+var sh = getShape( x );
 // returns [ 3, 2 ]
-
-var arr = ndarray2array( x );
-// returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 var y = toFlippedlr( x );
-// returns <ndarray>
+// returns <ndarray>[ [ 2.0, 1.0 ], [ 4.0, 3.0 ], [ 6.0, 5.0 ] ]
 
-sh = y.shape;
+sh = getShape( y );
 // returns [ 3, 2 ]
-
-arr = ndarray2array( y );
-// returns [ [ 2.0, 1.0 ], [ 4.0, 3.0 ], [ 6.0, 5.0 ] ]
 ```
 
 The function accepts the following arguments:
@@ -215,8 +209,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [npm-image]: http://img.shields.io/npm/v/@stdlib/ndarray-base-to-flippedlr.svg
 [npm-url]: https://npmjs.org/package/@stdlib/ndarray-base-to-flippedlr
 
-[test-image]: https://github.com/stdlib-js/ndarray-base-to-flippedlr/actions/workflows/test.yml/badge.svg?branch=v0.1.1
-[test-url]: https://github.com/stdlib-js/ndarray-base-to-flippedlr/actions/workflows/test.yml?query=branch:v0.1.1
+[test-image]: https://github.com/stdlib-js/ndarray-base-to-flippedlr/actions/workflows/test.yml/badge.svg?branch=main
+[test-url]: https://github.com/stdlib-js/ndarray-base-to-flippedlr/actions/workflows/test.yml?query=branch:main
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/ndarray-base-to-flippedlr/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/ndarray-base-to-flippedlr?branch=main
