@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,24 +16,29 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { ndarray } from '@stdlib/types/ndarray';
 
 /**
-* Return a new ndarray where the order of elements along the last dimension of an input ndarray is reversed.
+* Returns a new ndarray where the order of elements along the last dimension of an input ndarray is reversed.
 *
-* @module @stdlib/ndarray-base-to-flippedlr
+* @param x - input array
+* @returns output array
 *
 * @example
-* var ndarray = require( '@stdlib/ndarray-ctor' );
+* var typedarray = require( '@stdlib/array-typed' );
 * var getShape = require( '@stdlib/ndarray-shape' );
-* var toFlippedlr = require( '@stdlib/ndarray-base-to-flippedlr' );
+* var ndarray = require( '@stdlib/ndarray-ctor' );
 *
-* var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
+* var buffer = typedarray( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ], 'float64' );
 * var shape = [ 3, 2 ];
 * var strides = [ 2, 1 ];
 * var offset = 0;
 *
-* var x = ndarray( 'generic', buffer, shape, strides, offset, 'row-major' );
+* var x = ndarray( 'float64', buffer, shape, strides, offset, 'row-major' );
 * // returns <ndarray>[ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 *
 * var sh = getShape( x );
@@ -45,12 +50,9 @@
 * sh = getShape( y );
 * // returns [ 3, 2 ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function toFlippedlr<T extends ndarray>( x: T ): T;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = toFlippedlr;
